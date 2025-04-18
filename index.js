@@ -1,4 +1,12 @@
+/**
+ * 2048 game utility
+ */
 class Twenty48_Danyo {
+
+    /**
+     * Constructor for 2048 game spawns 2 random 2/4 tiles
+     * onto the 4x4 game board
+     */
     constructor() {
         // Initialize 4x4 empty board
         this.board = [
@@ -15,6 +23,12 @@ class Twenty48_Danyo {
         this.spawnTile(this.board, true);
     }
 
+    /**
+     * Spawns a tile (2 or 4) on a random empty
+     * tile of the board
+     * @param {Array<Array<Number>>} board current game board
+     * @param {boolean} rand flag for randomly using a 2 or a 4
+     */
     spawnTile(board, rand) {
         // Decide what value tile should be
         const n = rand ? Math.random() < .8 ? 2 : 4 : 2;
@@ -29,10 +43,21 @@ class Twenty48_Danyo {
         board[r][c] = n;
     }
 
+    /**
+     * Copies 2D array by value into another 2D array
+     * @param {Array<Array<Number>>} board current game board
+     * represented by 2D array of numbers
+     * @returns deep copy of input board
+     */
     copyBoard(board) {
         return board.map(row => [...row]);
     }
 
+    /**
+     * Rotates board 90 degrees counter clockwise
+     * @param {Array<Array<Number>>} board current game board
+     * @returns rotated board
+     */
     rot90(board) {
         const result = [];
         for (let i = 0; i < 4; i++) {
@@ -43,6 +68,12 @@ class Twenty48_Danyo {
         return result;
     }
 
+    /**
+     * Moves tile in board all to one side
+     * @param {Array<Array<Number>>} board current game board
+     * @param {String} dir direction to move tiles in (L, U, R, D)
+     * @returns board with tiles moved
+     */
     makeMove(board, dir) {
         let updatedBoard = this.copyBoard(board);
 
