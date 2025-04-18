@@ -1,0 +1,23 @@
+{
+  "name": "2048-danyo",
+  "version": "1.0.0",
+  "description": "2048 game utility",
+  "keywords": [
+    "2048"
+  ],
+  "homepage": "https://github.com/dhong9/2048-danyo#readme",
+  "bugs": {
+    "url": "https://github.com/dhong9/2048-danyo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhong9/2048-danyo.git"
+  },
+  "license": "MIT",
+  "author": "Danyo",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no tests found\" && exit 1"
+  }
+}
