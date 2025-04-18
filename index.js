@@ -21,6 +21,8 @@ class Twenty48_Danyo {
 
         // Other tile can be either '2' or '4'
         this.spawnTile(this.board, true);
+
+        this.score = 0;
     }
 
     /**
@@ -86,7 +88,11 @@ class Twenty48_Danyo {
                     +row
                         .filter((a) => a)
                         .join(" ")
-                        .replace(/\b(\d+) \1\b/g, (a, b) => b * 2)
+                        .replace(/\b(\d+) \1\b/g, (a, b) => {
+                            const prod = 2 * b;
+                            this.score += prod;
+                            return prod;
+                        })
                         .split(/ /)[x] || 0
                 )
                 );
@@ -103,3 +109,5 @@ class Twenty48_Danyo {
         return updatedBoard;
     }
 }
+
+module.exports = Twenty48_Danyo;
