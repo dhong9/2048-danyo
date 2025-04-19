@@ -111,6 +111,47 @@ class Twenty48_Danyo {
     }
 
     /**
+     * Checks if the game board for an empty square
+     * @param {Array<Array<Number>>} board current game board
+     * @returns true if the board has an empty square
+     */
+    hasEmptySquare(board) {
+        return board.some((row) => row.some((e) => !e));
+    }
+    
+    /**
+     * Checks if the board has tiles that can be merged.
+     * Note that it's okay for empty tiles to return true
+     * because this utility is used as part of checking
+     * for legal moves
+     * @param {Array<Array<Number>>} board current game board
+     * @returns true if any tiles can be merged
+     */
+    hasMergableTiles(board) {
+        const dir = [
+            [-1, 0],
+            [1, 0],
+            [0, -1],
+            [0, 1],
+        ];
+        return board.some((row, i) =>
+            row.some((v, j) =>
+            dir.some(([dRow, dCol]) => {
+                const nextRow = i + dRow,
+                nextCol = j + dCol;
+                return (
+                nextRow >= 0 &&
+                nextRow < 4 &&
+                nextCol >= 0 &&
+                nextCol < 4 &&
+                board[nextRow][nextCol] === v
+                );
+            })
+            )
+        );
+    }
+
+    /**
      * Provides string representation of the board
      * @returns board in string format
      */
