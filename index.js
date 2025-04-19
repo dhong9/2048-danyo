@@ -63,6 +63,7 @@ class Twenty48_Danyo {
     rot90(board) {
         const result = [];
         for (let i = 0; i < 4; i++) {
+            result.push([]);
             for (let j = 3; j >= 0; j--) {
                 result[i][3 - j] = board[j][i];
             }
@@ -90,7 +91,7 @@ class Twenty48_Danyo {
                         .join(" ")
                         .replace(/\b(\d+) \1\b/g, (a, b) => {
                             const prod = 2 * b;
-                            this.score += prod;
+                            this.score += !x * prod;
                             return prod;
                         })
                         .split(/ /)[x] || 0
@@ -102,11 +103,19 @@ class Twenty48_Danyo {
             return this.rot90(updatedBoard);
         };
 
-        for (let j = 0; j < 4; j += 1) {
+        for (let j = 0; j < 4; j++) {
             updatedBoard = move(j);
         }
 
         return updatedBoard;
+    }
+
+    /**
+     * Provides string representation of the board
+     * @returns board in string format
+     */
+    toString() {
+        return this.board.map(row => row.map(v => v || '.').join('')).join('\n');
     }
 }
 
