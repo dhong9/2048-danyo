@@ -140,15 +140,24 @@ class Twenty48_Danyo {
                 const nextRow = i + dRow,
                 nextCol = j + dCol;
                 return (
-                nextRow >= 0 &&
-                nextRow < 4 &&
-                nextCol >= 0 &&
-                nextCol < 4 &&
-                board[nextRow][nextCol] === v
+                    nextRow >= 0 &&
+                    nextRow < 4 &&
+                    nextCol >= 0 &&
+                    nextCol < 4 &&
+                    board[nextRow][nextCol] === v
                 );
             })
             )
         );
+    }
+
+    /**
+     * Checks if the game is over because there are no more legal moves
+     * @param {Array<Array<Number>>} board current game board
+     * @returns true if the game is over
+     */
+    gameOver(board) {
+        return !this.hasEmptySquare(board) && !this.hasMergableTiles(board);
     }
 
     /**
