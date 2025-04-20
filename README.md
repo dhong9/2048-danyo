@@ -7,7 +7,7 @@ A lightweight and extensible Node.js utility for managing the core logic of the 
 You can install this package using npm:
 
 ```sh
-npm install twenty48-danyo
+npm install 2048-danyo
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ npm install twenty48-danyo
 ### Importing the Module
 
 ```js
-const Twenty48 = require('twenty48-danyo');
+const Twenty48 = require('2048-danyo');
 ```
 
 ### Creating a Game Instance
